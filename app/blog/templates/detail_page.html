@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js_test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<h1>{{ object.title }}</h1>
+
+{{ object.content }}
+
+<div id="app">
+    <div class="demo" @click="attach_red = !attach_red" :class="{red: attach_red, blue: !attach_red}"></div>
+    <div class="demo" :class="{red: attach_red}"></div>
+    <div class="demo" :class="class_changer"></div>
+    <hr>
+    <div class="demo"></div>
+    <div class="demo" :style="[my_style, {height: width/2 + 'px'}]"></div>
+    <div class="demo" :style="my_style"></div>
+    <hr>
+    <input type="text" v-model="color">
+    <input type="text" v-model="width">
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            attach_red: false,
+            color: 'blue',
+            width: 100
+        },
+        computed: {
+            class_changer: function () {
+                return {
+                    green: this.attach_red,
+                    blue: !this.attach_red
+                }
+            },
+            my_style: function () {
+                return {
+                    backgroundColor: this.color,
+                    width: this.width + 'px'
+                }
+            }
+        }
+    });
+</script>
+<style>
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: grey;
+        display: inline-block;
+        margin: 10px;
+    }
+    .red {
+        background-color: red;
+        width: 200px;
+    }
+    .blue {
+        background-color: blue;
+        height: 200px;
+    }
+    .green {
+        background-color: green;
+        height: 300px;
+        width: 300px;
+    }
+</style>
+</body>
+</html>

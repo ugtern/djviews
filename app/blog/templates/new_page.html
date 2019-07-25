@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js_test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="show" @click="show = !show">it's first p</p>
+    <div v-else @click="show = !show">
+        {% for object in objected_list %}
+
+        <li>
+            <a href="/blog/{{ object.id }}">{{ object.title }}</a>
+        </li>
+
+        {% endfor %}
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true,
+        }
+    });
+</script>
+<style>
+
+</style>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.js_test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="show" @click="show = !show">it's first p</p>
+    <div v-else @click="show = !show">
+        <div v-for="lesh in simple_list">{{ lesh.name }}</div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            show: true,
+            simple_list: [
+                {name: 'lol', age: 307, weight: 5080},
+                {name: 'ololesh', age: 123, weight: 316}
+            ]
+        }
+    });
+</script>
+<style>
+
+</style>
+</body>
+</html>
